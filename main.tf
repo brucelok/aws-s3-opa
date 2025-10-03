@@ -12,20 +12,17 @@ variable "bucket_name" {
   description = "S3 bucket name please"
 }
 
+variable "region_name" {
+  type        = string
+  description = "aws region"
+}
+
 provider "aws" {
-  region = "ap-southeast-2"
+  region = var.region_name
 }
 
 resource "aws_s3_bucket" "this" {
   bucket = var.bucket_name
-
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
 }
 
 output "bucket_arn" {
