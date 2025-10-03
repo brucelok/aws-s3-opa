@@ -12,13 +12,13 @@ variable "bucket_name" {
   description = "S3 bucket name please"
 }
 
-variable "region_name" {
-  type        = string
-  description = "aws region"
-}
+#variable "region_name" {
+#  type        = string
+#  description = "aws region"
+#}
 
 provider "aws" {
-  region = var.region_name
+  region = "ap-southeast-2"
 }
 
 resource "aws_s3_bucket" "this" {
